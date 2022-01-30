@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: delivery-service
+spec:
+  containers:
+    - name: delivery-service
+      image: halildemir/delivery-service
+      ports:
+        - containerPort: 8080
+      readinessProbe:
+        httpGet:
+          path: /actuator/health/readiness
+          port: 8080
+        initialDelaySeconds: 100
+        periodSeconds: 15
+        failureThreshold: 3
+        timeoutSeconds: 3
+      livenessProbe:
+        httpGet:
+          path: /actuator/health/liveness
+          port: 8080
+        initialDelaySeconds: 100
+        periodSeconds: 15
+        failureThreshold: 3
+        timeoutSeconds: 3

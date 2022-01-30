@@ -1,7 +1,5 @@
 # Delivery Service
 
----
-
 The purpose of this service is that listing the deliveries by either they are received or not, and if a
 delivery is received then update it as received.
 
